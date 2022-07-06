@@ -1,0 +1,30 @@
+import cv2
+import numpy as np
+
+cap = cv2.VideoCapture(0)
+
+while True:
+    _, frame = cap.read()
+    hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    5
+
+    # Road color
+    low_red = np.array([0,0,50])
+    high_red = np.array([70,0,255])
+    road_mask = cv2.inRange(hsv_frame,low_red,high_red)
+    road = cv2.bitwise_and(frame, frame, mask=road_mask)
+
+    
+    # Red color
+    #low_red = np.array([0,0,50])
+    #high_red = np.array([128,128,128])
+    #red_mask = cv2.inRange(hsv_frame, low_red, high_red)
+    #red = cv2.bitwise_and(frame, frame, mask=red_mask)
+
+   
+    cv2.imshow("Road", road_mask)
+    cv2.imshow("Frame", frame)
+
+    key = cv2.waitKey(1)
+    if key == 27:
+        break
