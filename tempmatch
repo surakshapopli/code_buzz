@@ -1,0 +1,7 @@
+# importing required libraries
+import matplotlib.pyplot as plt
+
+# reading the image
+pic = plt.imread('E://TempMatch//Obstacles//1.jpg')
+plt.imshow(pic)
+
